@@ -1,9 +1,15 @@
-function App() {
+import { Canvas } from "./components/canvas/Canvas";
+import Customizer from "./pages/Customizer";
+import Home from "./pages/Home";
+
+const App = () => {
 	return (
-		<div className="App">
-			<h1 className="text-red-600">Hello</h1>
-		</div>
+		<main className="app transition-all ease-in">
+			<Home />
+			<Canvas />
+			<Customizer />
+		</main>
 	);
-}
+};
 
 export default App;
