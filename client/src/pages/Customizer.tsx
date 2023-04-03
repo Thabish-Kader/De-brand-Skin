@@ -11,9 +11,18 @@ import { ColorPicker } from "../components/ColorPicker";
 import { FilePicker } from "../components/FilePicker";
 import { reader } from "../config/helpers";
 
+interface DecalType {
+	stateProperty: string;
+	filterTab: string;
+}
+
+export interface DecalTypeMap {
+	[key: string]: DecalType;
+}
+
 const Customizer = () => {
 	const snap = useSnapshot(state);
-	const [file, setFile] = useState("");
+	const [file, setFile] = useState<File | null>(null);
 	const [prompt, setPrompt] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const [activeEditor, setActiveEditor] = useState("");
@@ -44,7 +53,7 @@ const Customizer = () => {
 		}
 	};
 
-	const handleDecals = (type: any, result: any) => {
+	const handleDecals = (type: string, result: string) => {
 		const decalType = DecalTypes[type];
 
 		state[decalType.stateProperty] = result;
@@ -77,8 +86,8 @@ const Customizer = () => {
 		});
 	};
 
-	const readFile = (type) => {
-		reader(file).then((result) => {
+	const readFile = (type: string) => {
+		reader(file!).then((result) => {
 			handleDecals(type, result);
 			setActiveEditor("");
 		});

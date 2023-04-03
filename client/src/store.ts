@@ -1,6 +1,6 @@
 import { proxy } from "valtio";
 
-const state = proxy({
+const state: Record<string, any> = proxy({
 	intro: true,
 	color: "#EFBD48",
 	isLogoTexture: true,

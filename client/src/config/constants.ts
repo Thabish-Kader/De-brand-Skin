@@ -3,6 +3,7 @@ import fileIcon from "../assets/file.png";
 import ai from "../assets/ai.png";
 import logoShirt from "../assets/logo-tshirt.png";
 import stylishShirt from "../assets/stylish-tshirt.png";
+import { DecalTypeMap } from "../pages/Customizer";
 
 export const EditorTabs = [
 	{
@@ -30,7 +31,7 @@ export const FilterTabs = [
 	},
 ];
 
-export const DecalTypes = {
+export const DecalTypes: DecalTypeMap = {
 	logo: {
 		stateProperty: "logoDecal",
 		filterTab: "logoShirt",
