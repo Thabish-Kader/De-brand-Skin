@@ -30,8 +30,8 @@ const Home = () => {
 					>
 						<motion.div {...headTextAnimation}>
 							<h1 className="head-text">
-								LET'S <br className="hidden xl:block" />
-								DO IT.
+								Fake <br className="hidden xl:block" />
+								DE BRAND
 							</h1>
 						</motion.div>
 						<motion.div {...headContentAnimation}>

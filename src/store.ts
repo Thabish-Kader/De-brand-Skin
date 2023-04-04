@@ -2,7 +2,7 @@ import { proxy } from "valtio";
 
 const state: Record<string, any> = proxy({
 	intro: true,
-	color: "#EFBD48",
+	color: "#6c8096",
 	isLogoTexture: true,
 	isFullTexture: false,
 	logoDecal: "./threejs.png",

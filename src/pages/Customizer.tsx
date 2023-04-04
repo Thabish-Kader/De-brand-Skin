@@ -6,7 +6,7 @@ import { fadeAnimation, slideAnimation } from "../config/motion";
 import { DecalTypes, EditorTabs, FilterTabs } from "../config/constants";
 import { Tab } from "../components/Tab";
 import { CustomButton } from "../components/CustomButton";
-import { AiPicker } from "../components/AiPicker";
+
 import { ColorPicker } from "../components/ColorPicker";
 import { FilePicker } from "../components/FilePicker";
 import { reader } from "../config/helpers";
@@ -23,8 +23,6 @@ export interface DecalTypeMap {
 const Customizer = () => {
 	const snap = useSnapshot(state);
 	const [file, setFile] = useState<File | null>(null);
-	const [prompt, setPrompt] = useState("");
-	const [isLoading, setIsLoading] = useState(false);
 	const [activeEditor, setActiveEditor] = useState("");
 	const [activeFilterTab, setActiveFilterTab] = useState<{
 		[key: string]: boolean;
@@ -46,8 +44,7 @@ const Customizer = () => {
 						readFile={readFile}
 					/>
 				);
-			case "aipicker":
-				return <AiPicker />;
+
 			default:
 				return null;
 		}
