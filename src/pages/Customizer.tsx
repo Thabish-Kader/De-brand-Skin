@@ -131,7 +131,7 @@ const Customizer = () => {
 						className="filtertabs-container"
 						{...slideAnimation("up")}
 					>
-						{FilterTabs.map((tab) => (
+						{/* {FilterTabs.map((tab) => (
 							<Tab
 								key={tab.name}
 								tab={tab}
@@ -141,6 +141,19 @@ const Customizer = () => {
 									handleActiveFilterTab(tab.name)
 								}
 							/>
+						))} */}
+						{snap.decals.map((decal) => (
+							<div
+								key={decal}
+								className={`decal`}
+								onClick={() => (state.currentDecal = decal)}
+							>
+								<img
+									src={decal}
+									alt="brand"
+									className="h-10 w-10 hover:scale-125 transition-transform duration-300 cursor-pointer"
+								/>
+							</div>
 						))}
 					</motion.div>
 				</>

@@ -1,4 +1,5 @@
 import { IPhoneCanvas } from "./components/canvas/IPhoneCanvas";
+import { CreateStyle } from "./pages/CreateStyle";
 import Customizer from "./pages/Customizer";
 import { Hero } from "./pages/Hero";
 
@@ -11,6 +12,7 @@ const App = () => {
 			{/* <Hero /> */}
 			<IPhoneCanvas />
 			<Customizer />
+			{/* <CreateStyle /> */}
 		</main>
 	);
 };

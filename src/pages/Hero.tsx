@@ -8,6 +8,8 @@ import {
 } from "react-icons/ai";
 import { useSnapshot } from "valtio";
 import state from "../store";
+import { CustomButton } from "../components/CustomButton";
+import { CreateStyle } from "./CreateStyle";
 
 export function Hero() {
 	const snap = useSnapshot(state);
@@ -22,21 +24,14 @@ export function Hero() {
 		exit: { x: -100, opacity: 0, transition: { ...transition, delay: 0 } },
 	};
 	return (
-		<div
-			style={{
-				position: "absolute",
-				top: 0,
-				left: 0,
-				width: "100%",
-				height: "100%",
-			}}
-		>
+		<div className="absolute top-0 left-0 w-full h-full ">
 			<motion.header
+				className="flex items-center justify-between p-5"
 				initial={{ opacity: 0, y: -100 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={transition}
 			>
-				<Logo width="40" height="40" />
+				<img src={Logo} alt="logo" className="h-20 w-20" />
 				<motion.div
 					animate={{
 						x: snap.intro ? 0 : 100,
@@ -50,7 +45,7 @@ export function Hero() {
 			<AnimatePresence>
 				{snap.intro ? (
 					<motion.section key="main" {...config}>
-						<div className="section--container">
+						<div className="mt-[5vh] ml-[5vw]">
 							<motion.div
 								key="title"
 								initial={{ x: 100, opacity: 0 }}
@@ -63,7 +58,10 @@ export function Hero() {
 									duration: 0.3,
 								}}
 							>
-								<h1>LET'S DO IT.</h1>
+								<h1 className="head-text">
+									Fake <br className="hidden xl:block" />
+									DE BRAND
+								</h1>
 							</motion.div>
 							<div className="support--content">
 								<motion.div
@@ -81,15 +79,13 @@ export function Hero() {
 									}}
 								>
 									<p>
-										Create your unique and exclusive shirt
-										with our brand-new 3D customization
-										tool.{" "}
-										<strong>
-											Unleash your imagination
-										</strong>{" "}
-										and define your own style.
+										"Your phone's skin is a reflection of
+										your personal style. Make it uniquely
+										yours with a custom design that speaks
+										to you."
 									</p>
 									<button
+										className="z-10"
 										style={{ background: snap.color }}
 										onClick={() => (state.intro = false)}
 									>
@@ -102,68 +98,10 @@ export function Hero() {
 					</motion.section>
 				) : (
 					<motion.section key="custom" {...config}>
-						<Customizer />
+						<CreateStyle />
 					</motion.section>
 				)}
 			</AnimatePresence>
-		</div>
-	);
-}
-
-function Customizer() {
-	const snap = useSnapshot(state);
-	return (
-		<div className="customizer">
-			<div className="color-options">
-				{snap.colors.map((color) => (
-					<div
-						key={color}
-						className={`circle`}
-						style={{ background: color }}
-						onClick={() => (state.color = color)}
-					></div>
-				))}
-			</div>
-			<div className="decals">
-				<div className="decals--container">
-					{snap.decals.map((decal) => (
-						<div
-							key={decal}
-							className={`decal`}
-							onClick={() => (state.decal = decal)}
-						>
-							<img src={decal + "_thumb.png"} alt="brand" />
-						</div>
-					))}
-				</div>
-			</div>
-			<button
-				className="share"
-				style={{ background: snap.color }}
-				onClick={() => {
-					const link = document.createElement("a");
-					link.setAttribute("download", "canvas.png");
-					link.setAttribute(
-						"href",
-						document
-							.querySelector("canvas")
-							.toDataURL("image/png")
-							.replace("image/png", "image/octet-stream")
-					);
-					link.click();
-				}}
-			>
-				DOWNLOAD
-				<AiFillCamera size="1.3em" />
-			</button>
-			<button
-				className="exit"
-				style={{ background: snap.color }}
-				onClick={() => (state.intro = true)}
-			>
-				GO BACK
-				<AiOutlineArrowLeft size="1.3em" />
-			</button>
 		</div>
 	);
 }

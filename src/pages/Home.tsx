@@ -8,6 +8,7 @@ import {
 } from "../config/motion";
 import state from "../store";
 import { CustomButton } from "../components/CustomButton";
+import { AiOutlineHighlight } from "react-icons/ai";
 
 const Home = () => {
 	const snap = useSnapshot(state);
@@ -36,19 +37,16 @@ const Home = () => {
 						</motion.div>
 						<motion.div {...headContentAnimation}>
 							<p className="max-w-md font-normal text-gray-600 text-base">
-								Lorem ipsum dolor sit, amet consectetur
-								adipisicing elit. Id ipsa qui modi totam, itaque
-								<strong>provident excepturi nostrum</strong>
-								laboriosam esse explicabo minima magnam, sunt
-								consequuntur fugit perferendis eaque delectus
-								cupiditate veniam.
+								"Your phone's skin is a reflection of your
+								personal style. Make it uniquely yours with a
+								custom design that speaks to you."
 							</p>
-							<CustomButton
-								type="filled"
-								title="Customize It"
-								handleClick={() => (state.intro = false)}
-								customStyles="w-fit px-4 py-2.5 font-bold text-sm"
-							></CustomButton>
+							<button
+								style={{ background: snap.color }}
+								onClick={() => (state.intro = false)}
+							>
+								CUSTOMIZE IT <AiOutlineHighlight size="1.3em" />
+							</button>
 						</motion.div>
 					</motion.div>
 				</motion.section>
