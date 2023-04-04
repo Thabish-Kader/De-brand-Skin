@@ -5,7 +5,7 @@ import { useSnapshot } from "valtio";
 import state from "../../store";
 import { useFrame } from "@react-three/fiber";
 import { easing } from "maath";
-import { ColorRepresentation, Texture } from "three";
+import { ColorRepresentation, MeshStandardMaterial, Texture } from "three";
 
 //Iphone model source: https://sketchfab.com/3d-models/apple-iphone-13-pro-max-4328dea00e47497dbeac73c556121bc9
 export const Iphone = () => {
@@ -31,25 +31,13 @@ export const Iphone = () => {
 				receiveShadow
 				geometry={nodes.Apple_Logo.geometry}
 				material={materials.Logo}
-				dispose={null}
-			>
-				{snap.isLogoTexture && (
-					<Decal
-						position={[0, 0, -0.5]}
-						rotation={[0, 0, 0]}
-						scale={0.15}
-						map={logoTexture as Texture}
-						map-anisotropy={16}
-						depthTest={false}
-						depthWrite={true}
-					/>
-				)}
-			</mesh>
+			></mesh>
 			<mesh
 				castShadow
 				receiveShadow
 				geometry={nodes.Body_Body_0.geometry}
 				material={materials.Body}
+				dispose={null}
 			>
 				{snap.isFullTexture && (
 					<Decal
@@ -57,6 +45,17 @@ export const Iphone = () => {
 						rotation={[0, 0, 0]}
 						scale={1}
 						map={fullTexture as Texture}
+					/>
+				)}
+				{snap.isLogoTexture && (
+					<Decal
+						position={[0, 0, 1]}
+						rotation={[0, 1, 0]}
+						scale={0.15}
+						map={logoTexture}
+						map-anisotropy={16}
+						depthTest={false}
+						depthWrite={true}
 					/>
 				)}
 			</mesh>

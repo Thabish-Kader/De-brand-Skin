@@ -44,7 +44,6 @@ const Customizer = () => {
 						readFile={readFile}
 					/>
 				);
-
 			default:
 				return null;
 		}
@@ -52,7 +51,7 @@ const Customizer = () => {
 
 	const handleDecals = (type: string, result: string) => {
 		const decalType = DecalTypes[type];
-
+		// @ts-ignore
 		state[decalType.stateProperty] = result;
 
 		if (!activeFilterTab[decalType.filterTab]) {
