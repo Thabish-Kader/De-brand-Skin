@@ -8,7 +8,8 @@ import {
 } from "../config/motion";
 import state from "../store";
 import { CustomButton } from "../components/CustomButton";
-import { AiOutlineHighlight } from "react-icons/ai";
+import { AiOutlineHighlight, AiOutlineShopping } from "react-icons/ai";
+import Logo from "../../public/logo.svg";
 
 const Home = () => {
 	const snap = useSnapshot(state);
@@ -17,12 +18,20 @@ const Home = () => {
 		<AnimatePresence>
 			{snap.intro && (
 				<motion.section className="home" {...slideAnimation("left")}>
-					<motion.header {...slideAnimation("down")}>
+					{/* <motion.header {...slideAnimation("down")}>
 						<img
 							src="./threejs.png"
 							alt="logo"
 							className="w-8 h-8 object-contain"
 						/>
+					</motion.header> */}
+					<motion.header
+						{...slideAnimation("down")}
+						className="flex items-center justify-between p-5"
+					>
+						<img src={Logo} alt="logo" className="h-20 w-20" />
+
+						<AiOutlineShopping size="3em" />
 					</motion.header>
 
 					<motion.div
@@ -32,7 +41,9 @@ const Home = () => {
 						<motion.div {...headTextAnimation}>
 							<h1 className="head-text">
 								Fake <br className="hidden xl:block" />
-								DE BRAND
+								<span className={`text-[${snap.color}]`}>
+									DE BRAND
+								</span>
 							</h1>
 						</motion.div>
 						<motion.div {...headContentAnimation}>

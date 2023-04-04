@@ -131,17 +131,6 @@ const Customizer = () => {
 						className="filtertabs-container"
 						{...slideAnimation("up")}
 					>
-						{/* {FilterTabs.map((tab) => (
-							<Tab
-								key={tab.name}
-								tab={tab}
-								isFilterTab
-								isActiveTab={activeFilterTab[tab.name]}
-								handleClick={() =>
-									handleActiveFilterTab(tab.name)
-								}
-							/>
-						))} */}
 						{snap.decals.map((decal) => (
 							<div
 								key={decal}

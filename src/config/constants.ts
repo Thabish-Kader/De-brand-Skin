@@ -14,10 +14,6 @@ export const EditorTabs = [
 		name: "filepicker",
 		icon: fileIcon,
 	},
-	{
-		name: "aipicker",
-		icon: ai,
-	},
 ];
 
 export const FilterTabs = [
