@@ -88,6 +88,7 @@ const Customizer = () => {
 			handleDecals(type, result);
 			setActiveEditor("");
 		});
+		state.isLogoTexture = true;
 	};
 
 	return (
@@ -132,18 +133,23 @@ const Customizer = () => {
 						{...slideAnimation("up")}
 					>
 						{snap.decals.map((decal) => (
-							<div
+							<img
 								key={decal}
-								className={`decal`}
-								onClick={() => (state.currentDecal = decal)}
-							>
-								<img
-									src={decal}
-									alt="brand"
-									className="h-10 w-10 hover:scale-125 transition-transform duration-300 cursor-pointer"
-								/>
-							</div>
+								src={decal}
+								alt="brand"
+								className="h-10 w-10 mt-3 hover:scale-125 transition-transform duration-300 cursor-pointer"
+								onClick={() => {
+									state.logoDecal = decal;
+									state.isLogoTexture = true;
+								}}
+							/>
 						))}
+						<button
+							className="rounded-full bg-transparent p-2"
+							onClick={() => (state.isLogoTexture = false)}
+						>
+							X
+						</button>
 					</motion.div>
 				</>
 			)}

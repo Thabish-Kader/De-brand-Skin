@@ -1,4 +1,4 @@
-import { Decal, useGLTF, useTexture } from "@react-three/drei";
+import { Decal, meshBounds, useGLTF, useTexture } from "@react-three/drei";
 import React from "react";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 import { useSnapshot } from "valtio";
@@ -31,7 +31,20 @@ export const Iphone = () => {
 				receiveShadow
 				geometry={nodes.Apple_Logo.geometry}
 				material={materials.Logo}
-			></mesh>
+			>
+				{/* {snap.isLogoTexture && (
+					<Decal
+						position={[0, -0.02, 0]}
+						rotation={[0, 0, 0]}
+						scale={0.08}
+						map={logoTexture}
+						map-anisotropy={16}
+						depthTest={false}
+						depthWrite={true}
+					></Decal>
+				)} */}
+			</mesh>
+
 			<mesh
 				castShadow
 				receiveShadow
@@ -49,14 +62,25 @@ export const Iphone = () => {
 				)}
 				{snap.isLogoTexture && (
 					<Decal
-						position={[0, 0, 1]}
-						rotation={[0, 1, 0]}
-						scale={0.15}
-						map={logoTexture}
+						position={[0, 0, 0]}
+						rotation={[0, 0, 0]}
+						scale={0.08}
 						map-anisotropy={16}
 						depthTest={false}
 						depthWrite={true}
-					/>
+					>
+						<mesh
+							scale={0.08}
+							position={[0, 0, 0.02]}
+							material={materials.Logo}
+						>
+							<circleGeometry />
+							<meshBasicMaterial
+								attach="material"
+								map={logoTexture}
+							/>
+						</mesh>
+					</Decal>
 				)}
 			</mesh>
 			<mesh

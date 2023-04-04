@@ -31,13 +31,7 @@ export const FilePicker = ({ file, setFile, readFile }: Props) => {
 					type="outline"
 					title="Logo"
 					handleClick={() => readFile("logo")}
-					customStyles="text-xs"
-				/>
-				<CustomButton
-					type="filled"
-					title="Full"
-					handleClick={() => readFile("full")}
-					customStyles="text-xs "
+					customStyles="text-xs bg-transparent"
 				/>
 			</div>
 		</div>
