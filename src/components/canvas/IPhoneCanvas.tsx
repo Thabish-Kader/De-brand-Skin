@@ -14,7 +14,7 @@ export const IPhoneCanvas = () => {
 			className="w-full max-w-full h-full transition-all ease-in "
 		>
 			<ambientLight intensity={0.5} />
-			<Environment preset="city" />
+			<spotLight position={[0, 0, 1]} />
 			<CameraRig>
 				<Backdrop />
 				<Center>

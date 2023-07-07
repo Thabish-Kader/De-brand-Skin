@@ -9,7 +9,7 @@ import {
 import state from "../store";
 import { CustomButton } from "../components/CustomButton";
 import { AiOutlineHighlight, AiOutlineShopping } from "react-icons/ai";
-import Logo from "../../public/logo.svg";
+import Logo from "/logo.svg";
 
 const Home = () => {
 	const snap = useSnapshot(state);
